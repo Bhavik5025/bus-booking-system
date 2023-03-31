@@ -19,11 +19,11 @@
         <div>
           
             <div class="topnav" style="width: 1290px; height: 70px;">
-                <a class="a1">Home</a>
-                <a class="a2" href="{% url 'history' %}">History</a>
-                <a  class="a2">Help</a>
-                <a class="a2" href="{% url 'profile' %}">Profile</a>
-                <a class="a3" href="{% url 'logout' %}">Logout</a>
+              <a class="a1" href="{%url 'home'%}">Home</a>
+              <a class="a2" href="{% url 'history' %}">History</a>
+              <a  class="a2"  href="{%url 'book_ticket_list' %}">Booked Ticket</a>
+              <a class="a2" href="{% url 'profile' %}">Profile</a>
+              <a class="a3" href="{% url 'logout' %}">Logout</a>
             </div>
             
               <div class="dd">
@@ -70,7 +70,7 @@
              <div style="display: flex;"> 
                 <div class="input-bx">
                    <input type="text" required="required" name="form" value="{{data.form}}"/>
-                   <span style="font-family: 'Poppins';">Form</span>
+                   <span style="font-family: 'Poppins';">From</span>
                 </div>
                    
                 <div class="input-bx" style="margin-left: 20px;">

@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-(@nest!g$*%_^8%punobmjr1a3l7vqxy1ddf=zl5p!bhn$da-+
 DEBUG = True
 
 ALLOWED_HOSTS = []
+RAZOR_KEY_ID = 'rzp_test_ULKXFl3prtGM7z'
+RAZOR_KEY_SECRET = 'IQyDNCHgqTTcZj1SGroTb0Cl'
 
 
 # Application definition
@@ -130,5 +132,10 @@ STATICFILES_DIRS=[
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='22ceuod003@ddu.ac.in'
+EMAIL_HOST_PASSWORD='Svsm4142'
+EMAIL_USE_TLS=True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -44,7 +44,6 @@ class Verified_travel_agency(models.Model):
         db_table='authentication_verified_travel_agency'
 
 class schedule(models.Model):
-    
     bus_type=models.CharField(max_length=30)
     form=models.CharField(max_length=30)
     to=models.CharField(max_length=30)
@@ -59,4 +58,22 @@ class schedule(models.Model):
     time=models.TimeField()
     class meta:
         db_table='authentication_schedule'
+class ticket(models.Model):
+    ticketid=models.CharField(max_length=100)
+    b_from=models.CharField(max_length=30)
+    b_to=models.CharField(max_length=30)
+    Customer_name=models.CharField(max_length=100,default=None)
+    Agency_number=models.CharField(max_length=10)
+    bus_type=models.CharField(max_length=30)
+    Customer_number=models.CharField(max_length=10)
+    date=models.CharField(max_length=60)
+    Seats=models.CharField(max_length=3)
+    amount=models.CharField(max_length=20)
+    seat_type=models.CharField(max_length=10)
+    Agency_name=models.CharField(max_length=100)
+    bus_number=models.CharField(max_length=10)
+    time=models.CharField(max_length=30)
+    booking_time=models.TimeField()
+    class meta:
+        db_table="authentication_ticket"
 # Create your models here.

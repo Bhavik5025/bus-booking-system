@@ -178,13 +178,11 @@
         <div style="width: 600px;margin-left: 0;">
             <div class="topnav" style="width: 1290px; height: 70px;">
                 <a class="a1" href="">Home</a>
-                <a class="a2" >About us</a>
-                <a  class="a2">Help</a>
-                <a class="a2">Ticket</a>
+                <a class="a2" href="{% url 'uprofile' %}">Profile</a>
+                <a class="a2" href="{% url 'ticket_list' %}">Ticket</a>
                 <a class="a3" href="{% url 'logout' %}">Logout</a>
             </div>
             <div class="dd">
-             
             <form method="post">
               {% csrf_token %}
               <div>
@@ -213,7 +211,7 @@
                      </div>
                      <div class="input-bx" style="width: 180px;">
                         <input type="Date" name="date"  style="padding-right: 20px; padding-left: 20px;" required/>
-                        <span style="font-family: 'Poppins';margin-left: 10px;">Date</span>
+                       
                      </div>
                      
             </div>

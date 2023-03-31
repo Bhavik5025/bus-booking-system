@@ -16,7 +16,7 @@
                 
                 <a class="a1" href="{%url 'home'%}">Home</a>
                 <a class="a2" href="{% url 'history' %}">History</a>
-                <a  class="a2">Help</a>
+                <a  class="a2"  href="{%url 'book_ticket_list' %}">Booked Ticket</a>
                 <a class="a2">Profile</a>
                 <a class="a3" href="{% url 'logout' %}">Logout</a>
             </div>
@@ -31,7 +31,7 @@
                     <div class="row g-0">
                       <div class="col-md-4 gradient-custom text-center text-red"
                         style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                        <img src="https://media.istockphoto.com/vectors/buss-vector-id1070145868?k=6&m=1070145868&s=612x612&w=0&h=h0bP4U5Rd5yvNNV1MGSgfpE_QlwwSi-WU5UILyPzoVU="
+                        <img src="../media/file/bus.jfif"
                           alt="Avatar" class="img-fluid my-5" style="width: 100px;" />
                         <h4 style="font-family: Poppins;color: rgb(255, 255, 255);">{{data.agency_name}}</h5>
                         <p style="font-family: Poppins; color:floralwhite;">Travel agency</p>

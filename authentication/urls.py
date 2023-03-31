@@ -20,6 +20,13 @@ urlpatterns = [
     path('adhome/fetch/<int:id>',views.approve),
     path('history/<int:id>',views.edit),
     path('profile/',views.profile,name="profile"),
-    path('user_home/',views.user_home,name="user_home")
-      
+    path('user_home/',views.user_home,name="user_home"),
+    path('user_home/booking/<int:id>',views.booking),
+    path('user_home/booking/success',views.success,name="success"),
+    path('ticket_list',views.ticket_list,name="ticket_list"),
+    path('download/<int:id>',views.download,name="download"),
+    path('user_profile/',views.uprofile,name="uprofile"),
+    path('book_ticket_list/',views.booklist,name="book_ticket_list"),
+    path('book_ticket_list/<int:id>',views.customers_list,name="customers_list"),
+    path('book_ticket_list/list/<int:id>',views.list_download)    
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

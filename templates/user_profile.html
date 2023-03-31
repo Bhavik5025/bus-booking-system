@@ -7,10 +7,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
         <link href='https://unpkg.com/css.gg@2.0.0/icons/css/password.css' rel='stylesheet'>
+        <link rel="stylesheet" type="text/css" href="../static/Home.css">
         
     </head>
     <body>
-             
         <style>
             body {
            margin: 0;
@@ -192,81 +192,114 @@
          font-family: 'Poppins';
          font-weight: bold;
        }
-       
+       .input-bx{
+        position: relative;
+        width: 370px;
+        
+    }
+    .input-bx input{
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        outline: none;
+        font-size: 1.2rem;
+        transition: 0.6s;
+    }
+    .input-bx textarea{
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        outline: none;
+        font-size: 1.2rem;
+        transition: 0.6s;
+    }
+    .input-bx span{
+        position: absolute;
+        left: 0;
+        padding: 10px;
+        font-size: 1rem;
+        color: #D64B4B;
+        text-transform: uppercase;
+        pointer-events: none;
+        transition: 0.6s;
+    }
+    .input-bx input:valid ~ span,
+    .input-bx input:focus ~ span{
+        color: #D64B4B;
+        transform: translateX(10px) translateY(-7px);
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 0 10px;
+        background: #fff;
+        letter-spacing: 0.1rem;
+    }
+    
+    .input-bx input:valid,
+    .input-bx input:focus{
+        color: #050404;
+        border: 2px solid #D64B4B;
+    
+    }
+    .input-bx textarea:valid ~ span,
+    .input-bx textarea:focus ~ span{
+        color: #D64B4B;
+        transform: translateX(10px) translateY(-7px);
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 0 10px;
+        background: #fff;
+        letter-spacing: 0.1rem;
+    }
+    
+    .input-bx textarea:valid,
+    .input-bx textarea:focus{
+        color: #050404;
+        border: 2px solid #D64B4B;
+    
+    }
                </style>
         <div style="width: 600px;margin-left: 0;">
             <div class="topnav" style="width: 1290px; height: 70px;">
                 <a class="a1" href="{%url 'user_home'%}">Home</a>
                 <a class="a2" href="{% url 'uprofile' %}">Profile</a>
-                
-                <a class="a2" href="{% url 'ticket_list'%}">Ticket</a>
+                <a class="a2" href="{% url 'ticket_list' %}">Ticket</a>
                 <a class="a3" href="{% url 'logout' %}">Logout</a>
             </div>
+
+            <div class="shadow-lg p-3 mb-5 bg-white rounded" style="border-radius: 20px;margin-left: 40px;margin-top: 100px;justify-content: center;list-style: none;display: list-item;width: 600px; height: max-content;align-items: center;">
+                <div>
+                    <label style="margin-top: 20px;font-family: Poppins;margin-left: 200PX; color: #D64B4B;font-weight: bold;font-size: 30px;">Information</label>
+           
+                </div>
+                <div class="text-center">
+                    <img src="../static/users.png" class="rounded float-left" width="100px" alt="...">
+                  </div>
+                  <div class="shadow p-3 mb-5 bg-white rounded" >
         
-            <div class="dm1">
-              
-                <div class="input-bx" style="margin-top: 5px;">
-                    <i class="fas fa-location-arrow" style="color: #D64B4B;size: 30px;"></i>  <label style="font-family: Poppins;margin-left: 5px;">Leaving from</label><br>
-                    <label style="margin-left: 23px;font-weight: lighter;">{{form}}</label>
-                 </div>
-                    <div class="dline">
+                  <div style="display: flex;margin-top: 20px; margin-left: 70px;">
+                    <i class='fas fa-id-card' style="font-size:24px;margin-top: 8px;color: #D64B4B;"></i>
+                    <div class="input-bx" style="margin-left: 19px;">
                        
-                    </div>
-                    <div class="input-bx" >
-                        <i class="fas fa-map-marker-alt" style="color: #D64B4B;size: 30px;margin-left: 5px;"></i> <label style="font-family: Poppins; margin-left: 5px;margin-top: 5px;  ">Going to</label><br>
-                        <label style="margin-left: 26px; font-weight: lighter" >{{to}}</label>
+                        <span style="font-family: 'Poppins';font-size: large;">{{Name}}</span>
                      </div>
-                     <div class="dline">
+                </div>
+                <div style="display: flex;margin-top: 20px; margin-left: 70px;">
+                    <i class='fa fa-mobile-phone' style="font-size:24px;margin-top: 8px;color: #D64B4B;"></i>
+                    <div class="input-bx" style="margin-left: 28px;">
                        
+                        <span style="font-family: 'Poppins';font-size: large;">{{mobile}}</span>
                      </div>
-                     <div class="input-bx"  style="margin-top: 5px;width: 230px;">
-                        <i class="far fa-calendar-alt" style="color: #D64B4B;size: 30px;margin-left: 5px;"></i> <label style="font-family: Poppins;margin-left: 5px;font-weight: lighter;">Date of journey</label><br>
-                        <label style="font-family: Poppins;margin-left: 26px;">{{dt}}</label>
-                    </div>
-                     
-                 
+                </div>
+                <div style="display: flex;margin-top: 20px; margin-left: 70px;">
+                    <i class='fa fa-envelope' style="font-size:24px;margin-top: 8px;color: #D64B4B;"></i>
+                    <div class="input-bx" style="margin-left: 20px;">
+                       
+                        <span style="font-family: 'Poppins';font-size: large; text-transform: lowercase;">{{email}}</span>
+                     </div>
+                </div>
+                </div>
             </div>
-
-            <div>
-                <label style="font-family: 'Poppins'; font-size: 35px; font-weight: bold; margin-top: 20px;margin-left: 30px;">Available Buses</label>
-              
-              </div>
-              {% for d in dc %}
-
-            <div class="dm">
-              
-                <div class="input-bx" style="margin-top: 10px;">
-                    <i class="fa fa-map-marker" style="color: #D64B4B;"></i>  <label style="font-family: Poppins;margin-left: 5px;">{{d.time}}</label>
-                 </div>
-                    <div class="dline">
-                       
-                    </div>
-                    <div class="input-bx">
-                        <label style="font-family: Poppins; margin-left: 10px;margin-top: 4px; font-size: large;">{{d.agency_name}}</label><br>
-                        <label style="margin-left: 30px; font-weight: lighter" >{{d.bus_type}}</label>
-                     </div>
-                     <div class="dline">
-                       
-                     </div>
-                     <div class="input-bx" style="width: 244px;">
-                        <label style="font-family: Poppins; margin-left: 50px;margin-top: 4px;">{{d.total_seats}} Seats Available</label><br>
-                        <label style="font-family: Poppins; font-weight: lighter;">{{d.window}} window seats, {{d.general}} general seats</label>
-                     </div>
-                     <div class="dline">
-                       
-                     </div>
-                     <div class="input-bx" style="margin-top: 10px;">
-                        <label style="font-size: large; font-family: Poppins; margin-left: 20px;" >{{d.price}} &#8377</label>
-                    </div>
-                    
-                        <a class="tm"  href="booking/{{d.id}}" style=" text-decoration: none;" class="link-light">Book</a>
-      
-                  
-            </div>
-            
-           
-           
-            {% endfor %}
-
     </body>
 </html>

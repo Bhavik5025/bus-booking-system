@@ -14,13 +14,17 @@
               swal('{{msg}}');
              
           {% endfor %}
+          t1=document.getElementsByName('total_seat').values;
+          t2=document.getElementsByTagName('window').values;
+          t3=document.getElementsByName('general').values;
+          
         </script>
         <div>
           
             <div class="topnav" style="width: 1290px; height: 70px;">
                 <a class="a1">Home</a>
                 <a class="a2" href="{% url 'history' %}">History</a>
-                <a  class="a2">Help</a>
+                <a  class="a2" href="{%url 'book_ticket_list' %}">Booked ticket</a>
                 <a class="a2" href="{% url 'profile' %}">Profile</a>
                 <a class="a3" href="{% url 'logout' %}">Logout</a>
             </div>
@@ -53,7 +57,7 @@
              <div style="display: flex;"> 
                 <div class="input-bx">
                    <input type="text" required="required" name="form"/>
-                   <span style="font-family: 'Poppins';">Form</span>
+                   <span style="font-family: 'Poppins';">From</span>
                 </div>
                    
                 <div class="input-bx" style="margin-left: 20px;">
@@ -64,11 +68,11 @@
                 <div style="display: flex;">
                   <div class="input-bx" style="font-family: 'Poppins';width: 160px;">
                     <input type="date" required name="date">
-                    <span style="font-family: 'Poppins';">Date</span>
+                    
                   </div>
                   <div class="input-bx" style="font-family: 'Poppins';width: 130px;margin-left: 20px;">
                     <input type="time" required name="time">
-                    <span style="font-family: 'Poppins';">Time</span>
+                    
                   </div>
                   
                 </div>

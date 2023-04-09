@@ -37,8 +37,7 @@ def home(request):
             saveschedule.general = request.POST.get('general')
             saveschedule.agency_number = request.session['um']
             saveschedule.agency_name = st.agency_name
-            saveschedule.pk = request.session['um'] + \
-                request.POST.get('bus_number')
+            saveschedule.pk = request.session['um'] + request.POST.get('bus_number')
             messages.success(request, "schedule successfully added")
             total = int(request.POST.get('total_seat'))
             window = int(request.POST.get('window'))
@@ -98,7 +97,7 @@ def loginpage(request):
                 if s.mobile_no == uname:
                     request.session['um'] = s.mobile_no
                     login(request, userauth)
-                    return render(request,"userhome.html")
+                    return redirect('user_home')
 
         else:
             messages.error(
@@ -151,8 +150,7 @@ def signup(request):
                         request.FILES['file'].name
                     print(request.FILES)
                     handle_uploaded_file(request.FILES['file'])
-                    my_user = User.objects.create_user(request.POST.get(
-                        'phone'), request.POST.get('email'), pass1)
+                    
 
                     saverecord.save()
                     print(saverecord.save())
@@ -161,11 +159,13 @@ def signup(request):
                         messages.success(
                             request, 'Travel Agency '+saverecord.agency_name+' details are saved suceessfully..!')
                         if messages.success:
+                            my_user = User.objects.create_user(request.POST.get(
+                            'phone'), request.POST.get('email'), pass1)
                             my_user.save()
                             send_mail(
                                 'Account Verification',
                                 'please waiting for account verification.your account status will updated in mail',
-                                '22ceuod003@ddu.ac.in',
+                                'bookingbus770@gmail.com',
                                 [em],
                                 fail_silently=False,
                             )
@@ -177,7 +177,7 @@ def signup(request):
                 except Exception as e:
                     v = str(e)
                     print(v)
-                    messages.error(request, "User Already exist...")
+                    messages.error(request, v)
                     return render(request, 'registration.html')
         else:
             messages.error(request, 'Travel Agency is save successfully..!')
@@ -320,7 +320,7 @@ def approve(request, id):
             'Account Verification',
             savedata.agency_name +
             ' is successfully verified by admin,now you can able to login to System',
-            '22ceuod003@ddu.ac.in',
+            'bookingbus770@gmail.com',
             [savedata.email],
             fail_silently=False,
         )
@@ -342,7 +342,7 @@ def dell(request, id):
         send_mail(
             'Account Confirmation',
             'your account is not verified by admin,please enter the valid information while registration,thank you',
-            '22ceuod003@ddu.ac.in',
+            'bookingbus770@gmail.com',
             [em],
             fail_silently=False,
         )
@@ -509,7 +509,7 @@ def success(request):
                     request.POST.get('cname')+',Thank you for Book ticket \nTicket id:'+str(num)+'\n From: '+request.POST.get('from')+'\t to:'+request.POST.get('to')+'\n Bus Number:'+request.POST.get('busnumber')+'\t bus type:' +
                     request.POST.get('bustype')+'\t Seats:'+abc+'\t Seat type:'+request.POST.get('type')+'\nDate:'+request.POST.get(
                         'date')+'\n Time:'+request.POST.get('time')+'\n Amount:'+request.POST.get('total')+'\u20B9',
-                    '22ceuod003@ddu.ac.in',
+                    'bookingbus770@gmail.com',
                     [email],
                     fail_silently=False,
                 )
@@ -551,7 +551,7 @@ def success(request):
                     request.POST.get('cname')+',Thank you for Book ticket \nTicket id:'+str(num)+'\n From: '+request.POST.get('from')+'\t to:'+request.POST.get('to')+'\n Bus Number:'+request.POST.get('busnumber')+'\t bus type:' +
                     request.POST.get('bustype')+'\t Seats:'+abc+'\n Seat type:'+request.POST.get('type')+'\nDate:'+request.POST.get(
                         'date')+'\n Time:'+request.POST.get('time')+'\n Amount:'+request.POST.get('total')+'\u20B9',
-                    '22ceuod003@ddu.ac.in',
+                    'bookingbus770@gmail.com',
                     [email],
                     fail_silently=False,
                 )

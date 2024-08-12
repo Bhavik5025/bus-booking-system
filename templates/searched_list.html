@@ -99,8 +99,9 @@
 
     .input-bx {
       position: relative;
-      width: 130px;
+      width: max-content;
       margin-left: 10px;
+      margin-right: 5px;
     }
 
     .input-bx input {
@@ -149,7 +150,7 @@
       border: 1px solid;
       padding: 10px;
       box-shadow: 5px 10px 18px #c9c5c5;
-      width: 900px;
+      width: 960px;
       height: 70px;
       margin-top: 20px;
       margin-left: 20px;
@@ -206,7 +207,7 @@
   </style>
   <div style="width: 600px;margin-left: 0;">
     <div class="topnav" style="width: 1290px; height: 70px;">
-      <a class="a1" href="{%url 'user_home'%}">Home</a>
+      <a class="a1" href="{%url 'user_home'%}" style="background-color: #f2f2f2;color: black;">Home</a>
       <a class="a2" href="{% url 'uprofile' %}">Profile</a>
 
       <a class="a2" href="{% url 'ticket_list'%}">Ticket</a>
@@ -215,7 +216,7 @@
 
     <div class="dm1">
 
-      <div class="input-bx" style="margin-top: 5px;">
+      <div class="input-bx" style="margin-top: 5px;width: 180px;">
         <i class="fas fa-location-arrow" style="color: #D64B4B;size: 30px;"></i> <label
           style="font-family: Poppins;margin-left: 5px;">Leaving from</label><br>
         <label style="margin-left: 23px;font-weight: lighter;">{{form}}</label>
@@ -223,7 +224,7 @@
       <div class="dline">
 
       </div>
-      <div class="input-bx">
+      <div class="input-bx" style="width: 180px;">
         <i class="fas fa-map-marker-alt" style="color: #D64B4B;size: 30px;margin-left: 5px;"></i> <label
           style="font-family: Poppins; margin-left: 5px;margin-top: 5px;  ">Going to</label><br>
         <label style="margin-left: 26px; font-weight: lighter">{{to}}</label>
@@ -250,7 +251,7 @@
 
     <div class="dm">
 
-      <div class="input-bx" style="margin-top: 10px;">
+      <div style="margin-top: 10px; width: max-content;">
         <i class="fa fa-map-marker" style="color: #D64B4B;"></i> <label
           style="font-family: Poppins;margin-left: 5px;">{{d.time}}</label>
       </div>
@@ -259,7 +260,7 @@
       </div>
       <div class="input-bx">
         <label
-          style="font-family: Poppins; margin-left: 10px;margin-top: 4px; font-size: large;">{{d.agency_name}}</label><br>
+          style="font-family: Poppins; margin-left: 10px;margin-top: 4px; font-size: large;width: 270px;">{{d.agency_name}}</label><br>
         <label style="margin-left: 30px; font-weight: lighter">{{d.bus_type}}</label>
       </div>
       <div class="dline">
@@ -274,7 +275,7 @@
       <div class="dline">
 
       </div>
-      <div class="input-bx" style="margin-top: 10px;">
+      <div class="input-bx" style="margin-top: 10px;margin-right: 10px;">
         <label style="font-size: large; font-family: Poppins; margin-left: 20px;">{{d.price}} &#8377</label>
       </div>
 

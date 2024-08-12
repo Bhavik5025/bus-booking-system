@@ -27,7 +27,7 @@
         <a class="a2" href="{% url 'aproved'%}">approved_agency</a>
         <a class="a3" href="{% url 'logout' %}">Logout</a>
     </div>
-    <table class="table table-striped" style="align:center;margin-left: 10px; margin-top: 20px ;margin-right: 10px;">
+    <table class="table table-striped" style="align:center; margin-top: 20px ;margin-right: 10px;">
         <tr>
             <th style=" background-color: #D64B4B;
                 font-family: 'Poppins';color:#f2f2f2">agency_name</th>
@@ -56,12 +56,12 @@
             <td style="font-family: Poppins;">{{result.aadhar_no}}</td>
             <td style="font-family: Poppins;"><a href="{{result.file}}" width="100" height="100" class="link-danger">
                     Certificate</td>
-            <td style="font-family: Poppins;color: #f2f2f2;"><button type="button" class="btn btn-success"><a
-                        href="fetch/{{result.id}}" style=" text-decoration: none;"
-                        class="link-light">approve</a></button></td>
-            <td style="font-family: Poppins;"><button type="button" class="btn btn-danger"><a
-                        href="delete/{{result.id}}" style=" text-decoration: none;"
-                        class="link-light">Delete</a></button></td>
+            <td style="font-family: Poppins;color: #f2f2f2;"><a
+                        href="fetch/{{result.id}}" class="btn btn-success" style=" text-decoration: none;"
+                        class="link-light">approve</a></td>
+            <td style="font-family: Poppins;"><a
+                        href="delete/{{result.id}}" class="btn btn-danger" style=" text-decoration: none;"
+                        class="link-light">Delete</a></td>
 
         </tr>
 

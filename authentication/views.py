@@ -91,8 +91,8 @@ def loginpage(request):
                     request.session['um'] = v.mobile_no
                     print(request.session['um'])
                     login(request, userauth)
-                    return render(request,"set_schedule.html")
-                    break
+                    return redirect('home')
+                    
             for s in users:
                 if s.mobile_no == uname:
                     request.session['um'] = s.mobile_no
@@ -137,6 +137,9 @@ def signup(request):
             else:
                 try:
                     saverecord = travel_agency()
+
+                    my_user = User.objects.create_user(request.POST.get('phone'), request.POST.get('email'), pass1)
+                    my_user.save()
                     saverecord.agency_name = request.POST.get('tname')
                     saverecord.pk = request.POST.get('phone')
                     saverecord.mobile_no = request.POST.get('phone')
@@ -150,34 +153,22 @@ def signup(request):
                         request.FILES['file'].name
                     print(request.FILES)
                     handle_uploaded_file(request.FILES['file'])
-                    
-
-                    saverecord.save()
                     print(saverecord.save())
-                    if saverecord.save():
-
-                        messages.success(
-                            request, 'Travel Agency '+saverecord.agency_name+' details are saved suceessfully..!')
-                        if messages.success:
-                            my_user = User.objects.create_user(request.POST.get(
-                            'phone'), request.POST.get('email'), pass1)
-                            my_user.save()
-                            send_mail(
+                    messages.success(request, 'Travel Agency '+saverecord.agency_name+' details are saved suceessfully..!')
+                    saverecord.save()
+                    send_mail(
                                 'Account Verification',
-                                'please waiting for account verification.your account status will updated in mail',
+                                'Dear User,\n\n\nPlease waiting for account verification.\nYour Account Status will update in mail\n\nThank You',
                                 'bookingbus770@gmail.com',
                                 [em],
                                 fail_silently=False,
                             )
-                            return redirect('login')
-                    else:
-                        messages.error(request, "Some Problem in data..")
-                        return render(request, "registration.html")
-
+                    return redirect('login')
+                 
                 except Exception as e:
                     v = str(e)
                     print(v)
-                    messages.error(request, v)
+                    messages.error(request, "Some Issue in Information,Please Provide Valid Information")
                     return render(request, 'registration.html')
         else:
             messages.error(request, 'Travel Agency is save successfully..!')
@@ -341,7 +332,7 @@ def dell(request, id):
     if messages.success:
         send_mail(
             'Account Confirmation',
-            'your account is not verified by admin,please enter the valid information while registration,thank you',
+            'Dear User,\n\n\nYour account is not verified by Admin,\nPlease enter the valid Information While Registration.\n\nThank you',
             'bookingbus770@gmail.com',
             [em],
             fail_silently=False,
@@ -442,7 +433,7 @@ def booking(request, id):
                                                    'payment_capture': '1'})
                     print(orderamount)
                     request.session['amount'] = orderamount
-                    return render(request, "index.html", {'amount1': amount, 'amount': orderamount, 'bustype': booking.bus_type, 'from': booking.form, 'to': booking.to, 'date': booking.date, 'time': booking.time, 'aname': booking.agency_name, 'tseat': booking.total_seats, 'window': booking.window, 'General': booking.general, 'price': booking.price, 'cname': customer.user_name, 'id': booking.id, 'adds': adds, 'type': 'Window', "busnumber": booking.bus_number, "bustype": booking.bus_type, "anumber": booking.agency_number})
+                    return render(request, "booking_confirmation.html", {'amount1': amount, 'amount': orderamount, 'bustype': booking.bus_type, 'from': booking.form, 'to': booking.to, 'date': booking.date, 'time': booking.time, 'aname': booking.agency_name, 'tseat': booking.total_seats, 'window': booking.window, 'General': booking.general, 'price': booking.price, 'cname': customer.user_name, 'id': booking.id, 'adds': adds, 'type': 'Window', "busnumber": booking.bus_number, "bustype": booking.bus_type, "anumber": booking.agency_number})
                 else:
                     messages.error(request, "not Available Seats...")
                     return render(request, "booking.html", {'bustype': booking.bus_type, 'from': booking.form, 'to': booking.to, 'date': booking.date, 'time': booking.time, 'aname': booking.agency_name, 'tseat': booking.total_seats, 'window': booking.window, 'General': booking.general, 'price': booking.price, 'cname': customer.user_name})
@@ -458,7 +449,7 @@ def booking(request, id):
                                                    'payment_capture': '1'})
                     print(orderamount)
                     request.session['amount'] = orderamount
-                    return render(request, "index.html", {'amount1': amount, 'amount': orderamount, 'bustype': booking.bus_type, 'from': booking.form, 'to': booking.to, 'date': booking.date, 'time': booking.time, 'aname': booking.agency_name, 'tseat': booking.total_seats, 'window': booking.window, 'General': booking.general, 'price': booking.price, 'cname': customer.user_name, 'id': booking.id, 'adds': adds, 'type': 'General', "busnumber": booking.bus_number, "bustype": booking.bus_type, "anumber": booking.agency_number})
+                    return render(request, "booking_confirmation.html", {'amount1': amount, 'amount': orderamount, 'bustype': booking.bus_type, 'from': booking.form, 'to': booking.to, 'date': booking.date, 'time': booking.time, 'aname': booking.agency_name, 'tseat': booking.total_seats, 'window': booking.window, 'General': booking.general, 'price': booking.price, 'cname': customer.user_name, 'id': booking.id, 'adds': adds, 'type': 'General', "busnumber": booking.bus_number, "bustype": booking.bus_type, "anumber": booking.agency_number})
                 else:
                     messages.error(request, "not Available Seats...")
                     return render(request, "booking.html", {'bustype': booking.bus_type, 'from': booking.form, 'to': booking.to, 'date': booking.date, 'time': booking.time, 'aname': booking.agency_name, 'tseat': booking.total_seats, 'window': booking.window, 'General': booking.general, 'price': booking.price, 'cname': customer.user_name})
@@ -548,9 +539,9 @@ def success(request):
             try:
                 send_mail(
                     'Ticket Booking',
-                    request.POST.get('cname')+',Thank you for Book ticket \nTicket id:'+str(num)+'\n From: '+request.POST.get('from')+'\t to:'+request.POST.get('to')+'\n Bus Number:'+request.POST.get('busnumber')+'\t bus type:' +
-                    request.POST.get('bustype')+'\t Seats:'+abc+'\n Seat type:'+request.POST.get('type')+'\nDate:'+request.POST.get(
-                        'date')+'\n Time:'+request.POST.get('time')+'\n Amount:'+request.POST.get('total')+'\u20B9',
+                    '\n\n'+request.POST.get('cname')+','+'\nThank you for Book ticket \n\nTicket id :'+str(num)+'\n From : '+request.POST.get('from')+'\t to :'+request.POST.get('to')+'\n Bus Number :'+request.POST.get('busnumber')+'\t bus type :' +
+                    request.POST.get('bustype')+'\t Seats :'+abc+'\nSeat type :'+request.POST.get('type')+'\nDate :'+request.POST.get(
+                        'date')+'\n Time :'+request.POST.get('time')+'\n Amount :'+request.POST.get('total')+'\u20B9',
                     'bookingbus770@gmail.com',
                     [email],
                     fail_silently=False,

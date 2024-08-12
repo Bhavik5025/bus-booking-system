@@ -280,7 +280,7 @@
     <div style="width: 600px;margin-left: 0;">
         <div class="topnav" style="width: 1290px; height: 70px;">
             <a class="a1" href="{%url 'user_home'%}">Home</a>
-            <a class="a2" href="{% url 'uprofile' %}">Profile</a>
+            <a class="a2" href="{% url 'uprofile' %}" style="background-color: #f2f2f2;color: black;">Profile</a>
             <a class="a2" href="{% url 'ticket_list' %}">Ticket</a>
             <a class="a3" href="{% url 'logout' %}">Logout</a>
         </div>
@@ -295,8 +295,7 @@
             <div class="text-center">
                 <img src="../static/users.png" class="rounded float-left" width="100px" alt="...">
             </div>
-            <div class="shadow p-3 mb-5 bg-white rounded">
-
+           
                 <div style="display: flex;margin-top: 20px; margin-left: 70px;">
                     <i class='fas fa-id-card' style="font-size:24px;margin-top: 8px;color: #D64B4B;"></i>
                     <div class="input-bx" style="margin-left: 19px;">
@@ -311,7 +310,7 @@
                         <span style="font-family: 'Poppins';font-size: large;">{{mobile}}</span>
                     </div>
                 </div>
-                <div style="display: flex;margin-top: 20px; margin-left: 70px;">
+                <div style="display: flex;margin-top: 20px; margin-left: 70px;margin-bottom: 20px;">
                     <i class='fa fa-envelope' style="font-size:24px;margin-top: 8px;color: #D64B4B;"></i>
                     <div class="input-bx" style="margin-left: 20px;">
 
@@ -319,7 +318,7 @@
                             style="font-family: 'Poppins';font-size: large; text-transform: lowercase;">{{email}}</span>
                     </div>
                 </div>
-            </div>
+            
         </div>
 </body>
 
